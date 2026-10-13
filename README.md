@@ -225,7 +225,7 @@ La imagen oficial se construye desde el repositorio. La primera construcción pu
 
 ```bash
 cd /opt/hermes-agent
-docker build -t hermes-agent:local .
+sudo docker build -t hermes-agent:local .
 ```
 
 ## Windows PowerShell
@@ -238,7 +238,7 @@ docker build -t hermes-agent:local .
 Comprueba que la imagen está disponible:
 
 ```bash
-docker image ls hermes-agent
+sudo docker image ls hermes-agent
 ```
 
 En PowerShell:
@@ -255,7 +255,7 @@ docker image ls hermes-agent
 
 ```bash
 cd /opt/hermes-agent
-docker compose up -d
+sudo docker compose up -d
 ```
 
 ## Windows PowerShell
@@ -268,7 +268,7 @@ docker compose up -d
 Comprueba el estado:
 
 ```bash
-docker compose ps
+sudo docker compose ps
 ```
 
 Los dos servicios deben aparecer como `running`.
@@ -280,13 +280,13 @@ Los dos servicios deben aparecer como `running`.
 Ejecuta el asistente de configuración dentro del contenedor del gateway:
 
 ```bash
-docker exec -it hermes hermes setup
+sudo docker exec -it hermes hermes setup
 ```
 
 También puedes abrir una consola:
 
 ```bash
-docker exec -it hermes /bin/bash
+sudo docker exec -it hermes /bin/bash
 ```
 
 Y ejecutar dentro del contenedor:
@@ -346,7 +346,7 @@ TELEGRAM_FREE_RESPONSE_CHATS=-1001234567890
 Después de modificar `.env`, recrea los contenedores:
 
 ```bash
-docker compose up -d --force-recreate
+sudo docker compose up -d --force-recreate
 ```
 
 No basta con reiniciar una sesión de conversación; el gateway debe volver a cargar las variables de entorno.
@@ -358,19 +358,19 @@ No basta con reiniciar una sesión de conversación; el gateway debe volver a ca
 ## Logs del gateway
 
 ```bash
-docker logs -f hermes
+sudo docker logs -f hermes
 ```
 
 ## Logs del dashboard
 
 ```bash
-docker logs -f hermes-dashboard
+sudo docker logs -f hermes-dashboard
 ```
 
 ## Estado de los contenedores
 
 ```bash
-docker compose ps
+sudo docker compose ps
 ```
 
 ## Comprobar el puerto del dashboard
@@ -390,13 +390,13 @@ Get-NetTCPConnection -LocalPort 9119
 ## Reiniciar Hermes
 
 ```bash
-docker compose restart
+sudo docker compose restart
 ```
 
 ## Recrear tras cambiar la configuración
 
 ```bash
-docker compose up -d --force-recreate
+sudo docker compose up -d --force-recreate
 ```
 
 ---
@@ -410,7 +410,7 @@ Portainer no sustituye a Docker Compose; administra los contenedores y stacks qu
 Construye la imagen desde el repositorio:
 
 ```bash
-docker build -t hermes-agent:local .
+sudo docker build -t hermes-agent:local .
 ```
 
 Después, en Portainer:
@@ -454,8 +454,8 @@ Actualiza desde el repositorio y vuelve a construir la imagen:
 ```bash
 cd /opt/hermes-agent
 git pull
-docker build --pull -t hermes-agent:local .
-docker compose up -d
+sudo docker build --pull -t hermes-agent:local .
+sudo docker compose up -d
 ```
 
 ## Windows PowerShell
@@ -488,7 +488,7 @@ Puedes copiar el directorio persistente entre sistemas, pero Hermes debe estar d
 1. Ejecuta:
 
 ```bash
-docker compose down
+sudo docker compose down
 ```
 
 2. Copia `/opt/hermes-data` a `C:\hermes-data`.
